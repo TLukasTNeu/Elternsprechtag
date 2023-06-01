@@ -46,20 +46,19 @@
                       
                     </li>
                       
+                    
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#"> KALENDER </a>
-                      
-                    </li>
-                      
+                            <form id="termine" action="termineStudent">
+                               <a action="submit" href="#" class="nav-link active" aria-current="page" onclick="document.getElementById('termine').submit()"> TERMINE </a>
+                            </form>                       
+                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"> TERMINE </a>
+                            <form id="logout" action="logoutStudent">
+                               <a action="submit" href="#" class="nav-link active" aria-current="page" onclick="document.getElementById('logout').submit()"> ABMELDEN </a>
+                            </form>                       
+                     </li>
                       
-                    </li>
-                      
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#"> LEHERLOGIN </a>
-                      
-                    </li>
+                  
                       
                     </ul>
                   </div>
@@ -84,8 +83,11 @@
             
             
             </div>
-            
-            
+       
+
+                
+
+                     
             <div class="col-lg-4">
                 
                 
@@ -98,25 +100,41 @@
                   
                         <div class="card-body p-5"> 
                         
-                            <form >
+                            <form action = 'terminAuswahl'>
                                   <div class="form-group">
                                       
                                     <label for="Klasse"> LEHRER AUSWÄHLEN </label>
-                                    <select class="form-select form-select mb-3" >
+                                    <select class="form-select form-select mb-3" name="name" >
                                     @foreach($data as $i)
-                                      <option value="{{$i->lehrerId}}"> {{$i->lehrerVorname}} {{$i->lehrerNachname}} | {{$i->lehrerTitel}} </option>                                    
+                                      <option value="{{$i->lehrerID}}"> {{$i->lehrerVN}} {{$i->lehrerNN}}</option>                                    
                                     @endforeach
+                                   
                                     </select>
                                     
                                   </div>
 
                                   <button type="submit" class="btn btn-success rounded-2 "> Weiter </button>
                                 </form>
-                            
-                           
-                            
+                      </div>
+
+                      <div class="row mt-2"> 
+                      <div class="col-md-1"></div>
+                      <div class="col-md-10">  <div href="#" class="card bg-light text-dark m-2 p-2 border-dark rounded-1 text-center" >  
+                                        <div class="display text-dark"><strong>  ABWESENDE LEHRER </strong></div>
+                                        <div class="text-dark">  
+                                        @foreach($fehlend as $lehrer)
+                                               {{ $lehrer->lehrerVN}}  {{$lehrer->lehrerNN}}<br>
+                                            @endforeach
+                                                                                    
+                                                        </div>
                             </div>
-                            
+                      <div class="col-md-1"></div>
+
+
+                      </div>
+                              
+                            </div>
+                         
                         
                         </div>
                     
